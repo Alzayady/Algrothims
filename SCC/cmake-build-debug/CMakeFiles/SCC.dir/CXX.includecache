@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Ahmed Alzayadi/Dropbox/My PC (DESKTOP-1J3FH9J)/Desktop/Programming/Algorithm/SCC/main.cpp
+bits/stdc++.h
+-
+
