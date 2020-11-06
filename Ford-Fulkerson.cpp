@@ -1,63 +1,72 @@
 #include <bits/stdc++.h>
 #define endll "\n";
 using namespace std;
-bool bfs(vector<vector<int>> c,int s,int t,vector<int> &vis,vector<int> &par){
-     queue<int> q;
-     q.push(s);
-     vis[s]=1;
-     while(!q.empty()){
-         int u=q.front();
-         q.pop();
-         for(int i=0;i<c.size();i++){
-             if(vis[i]==0&&c[u][i]>0){
-                 par[i]=u;vis[i]=1;q.push(i);
-                 if(i==t){
-                     return true;
-                 }
-             }
-         }
-     }
-     return false;
+int c[1000][1000];
+vector<int>p;
+int n , m ;
+
+bool bfs(){
+    p.clear();
+    p.resize(n+1,-1);
+    vector<bool>vis(n);
+    vis[0] = true;
+    queue<int>q;
+    q.push(0);
+    while(q.size()){
+        int last = q.front();
+        q.pop();
+        for(int i = 0 ; i <n ; i++){
+            if(c[last][i] > 0 && vis[i] == false){
+                p[i] = last;
+
+                if(i==n-1){
+                    return true;
+                }
+                vis[i] = true;
+                q.push(i);
+
+            }
+        }
+    }
+    return false;
 }
-int main()
-{
-    ios_base::sync_with_stdio(false);cin.tie(NULL);
-    int t;cin>>t;
+int main() {
+    int t ;
+    cin>>t;
     while(t--){
-        int n;cin>>n;
-        int e;cin>>e;
-        vector<vector<int>> c(n,vector<int> (n,0));
-        int u,v,w;
-        for(int i=0;i<e;i++){
-           cin>>u>>v>>w;
-           c[u-1][v-1]+=w;
-           c[v-1][u-1]+=w;
+        cin>>n>>m ;
+        for(int i = 0 ; i < n ; i++){
+            for(int j = 0 ; j < n ; j ++){
+                c[i][j]=c[j][i]=0;
+            }
         }
-        int max_flow=0;
-        while(true){
-            vector<int> vis(n,0),par(n,-1);
-            if(bfs(c,0,n-1,vis,par)==false){
-                break;
-            }
-            int max1=INT_MAX;
-            int v=n-1;
-            while(par[v]!=-1){
-                max1=min(c[par[v]][v],max1);
-                v=par[v];
-            }
-            v=n-1;
-            while(par[v]!=-1){
-                c[par[v]][v]-=max1;
-                c[v][par[v]]+=max1;
-                v=par[v];
-            }
-            max_flow+=max1;
+        for(int i = 0 ; i < m ; i++){
+            int a , b ,cc ;
+            cin>>a>>b>>cc;
+            // if piderictional 
+            c[a-1][b-1]+=cc;
+            c[b-1][a-1]+=cc;
+            // else 
+            //  c[a-1][b-1]+=cc;
+
         }
-        cout<<max_flow<<endll;
+        int ans = 0;
+        while(bfs()){
+            int d = n-1 ;
+            int max_flow = INT_MAX;
+            while(p[d]!=-1){
+                max_flow=min(max_flow,c[p[d]][d]);
+                d=p[d];
+            }
+            ans+=max_flow;
+            d= n-1 ;
+            while(p[d]!=-1){
+                c[p[d]][d]-=max_flow;
+                c[d][p[d]]+=max_flow;
+                d=p[d];
+            }
+        }
+        cout<<ans<<endl;
     }
     return 0;
 }
-
-/*
-
-*/
