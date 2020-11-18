@@ -77,4 +77,11 @@ treap * merge(treap * t1 , treap *t2){
     }
 
 }
+treap * addRange(treap * it, int l , int r , int value){
+    array<treap* , 2> ans = split(it,l);
+    array<treap*,2>ans2 = split(ans[1],r-l+1);
+    ans2[0]->toProp+=value;
+    return merge(ans[0],merge(ans2[0],ans2[1]));
+}
+
 
