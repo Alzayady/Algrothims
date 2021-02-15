@@ -8,7 +8,7 @@ mt19937 rng((unsigned int) chrono::steady_clock::now().time_since_epoch().count(
 
 int n;
 const int N = 2400000;
-int head[N], nxt[N], to[N];
+int head[30], nxt[N], to[N];
 int ne;
 vector<int> ans;
 unordered_set<int> visitedEdge;
@@ -16,7 +16,7 @@ vector<string> vec;
 
 void init() {
     ne = 0;
-    memset(head, -1, (10 * n) * sizeof head[0]);
+    memset(head, -1, 30 * sizeof head[0]);
     ans.clear();
     visitedEdge.clear();
     vec.clear();
