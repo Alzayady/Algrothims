@@ -5,7 +5,7 @@ typedef long long ll;
 typedef long double ld;
 using namespace std;
 mt19937 rng((unsigned int) chrono::steady_clock::now().time_since_epoch().count());
-
+// link :  https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1459
 vector<vector<ll>> mul(vector<vector<ll>> a, vector<vector<ll>> b, ll mod) {
     int n = a.size();
     int m = b[0].size();
