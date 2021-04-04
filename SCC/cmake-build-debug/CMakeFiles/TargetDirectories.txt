@@ -1,3 +1,0 @@
-C:/Users/Ahmed Alzayadi/Dropbox/My PC (DESKTOP-1J3FH9J)/Desktop/Programming/Algorithm/SCC/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Ahmed Alzayadi/Dropbox/My PC (DESKTOP-1J3FH9J)/Desktop/Programming/Algorithm/SCC/cmake-build-debug/CMakeFiles/SCC.dir
-C:/Users/Ahmed Alzayadi/Dropbox/My PC (DESKTOP-1J3FH9J)/Desktop/Programming/Algorithm/SCC/cmake-build-debug/CMakeFiles/rebuild_cache.dir
