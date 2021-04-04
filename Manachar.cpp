@@ -25,12 +25,10 @@ struct Manachar {
         int l = 0;
         int r = 0;
         int s_h = hashed.size();
-        //cout<<hashed<<endl;
         for (int i = 0; i < s_h; i++) {
             int mirror = l + (r - i);
             if (r > i) {
                 // not on the border
-              //  cout<<mirror<<endl;
                 p[i] = min(p[mirror], r - i);
             } else {
                 p[i] = 0;
