@@ -46,10 +46,11 @@ struct fenwick {
         int ans = get_(r) - get_(l - 1);
         return ans;
     }
-    
+
 };
 
 int main() {
+    IO;
     int n, k;
     cin >> n >>k ;
     k = 1;
@@ -59,7 +60,6 @@ int main() {
     }
     int cur = 1;
     int all = n;
-    unordered_set<int> done;
     while (all > 0) {
         int l = cur;
         int r = n;
@@ -85,11 +85,9 @@ int main() {
             }
         }
         f->add(ans, -1);
-        cout << ans << endl;
-        done.insert(ans);
+        cout << ans << " ";
         cur = ans;
         all--;
     }
-
     return 0;
 }
