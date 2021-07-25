@@ -10,6 +10,8 @@ ll extended_eclid(ll a, ll b, ll &x, ll &y) {
     return g;
 }
 
+int g = -1;
+
 vector<ll> extended(vector<ll> vec) {
     int n = vec.size();
     vector<ll> g_nxt(n);
@@ -22,7 +24,10 @@ vector<ll> extended(vector<ll> vec) {
     for (int i = 0; i < n - 1; i++) {
         ll xx;
         ll yy;
-        extended_eclid(vec[i], g_nxt[1 + 1], xx, yy);
+        ll gg = extended_eclid(vec[i], g_nxt[1 + i], xx, yy);
+        if (g == -1) {
+            g = gg;
+        }
         coff[i] = xx * pre;
         pre *= yy;
     }
