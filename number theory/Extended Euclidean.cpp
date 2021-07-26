@@ -1,4 +1,14 @@
 ll extended_eclid(ll a, ll b, ll &x, ll &y) {
+    if (a < 0) {
+        ll r = extended_eclid(-1 * a, b, x, y);
+        x *= -1;
+        return r;
+    }
+    if (b < 0) {
+        ll r = extended_eclid(a, -1 * b, x, y);
+        y *= -1;
+        return r;
+    }
     if (b == 0) {
         y = 0;
         x = 1;
@@ -34,3 +44,4 @@ vector<ll> extended(vector<ll> vec) {
     coff[n - 1] = pre;
     return coff;
 }
+
