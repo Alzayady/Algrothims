@@ -89,7 +89,6 @@ vector<ll> liner_modular(ll a, ll b, ll m) {
     return {};
 }
 
-vector<int> dsu;
 
 void shift_solution(ll &x, ll &y, ll a, ll b, ll cnt) {
     x += cnt * b;
