@@ -1,4 +1,4 @@
-void phi(int n) {
+void phi(int n) { // from 1 to n 
     vector<int> phi(n + 1);
     phi[0] = 0;
     phi[1] = 1;
@@ -11,4 +11,18 @@ void phi(int n) {
                 phi[j] -= phi[j] / i;
         }
     }
+}
+
+void phi_n(int n ){ // only n 
+    ll ans = n;
+    for (ll i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            while (n % i == 0) {
+                n /= i;
+            }
+            ans -= ans / i;
+        }
+    }
+    if (n > 1)ans -= ans / n;
+    return ans;
 }
