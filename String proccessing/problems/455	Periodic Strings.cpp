@@ -16,7 +16,6 @@ int get_(string str) {
     z[0] = 0;
     int left = 0;
     int right = 0;
-    int m = 0;
     for (int i = 1; i < n; i++) {
         if (i > right) {
             left = right = i;
@@ -38,7 +37,6 @@ int get_(string str) {
                 right--;
             }
         }
-        m = max(m, z[i]);
     }
     map<int, int> ans;
     for (int i = 1; i < n; i++) {
