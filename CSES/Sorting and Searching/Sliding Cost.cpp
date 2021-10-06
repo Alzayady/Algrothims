@@ -14,8 +14,6 @@ mt19937 rng((unsigned long long) chrono::steady_clock::now().time_since_epoch().
 using namespace __gnu_pbds;
 
 template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
-// Finding the number of element  strictly less or equal than k=4 o_set.order_of_key(4)
-
 
 int32_t main() {
     IO;
@@ -60,25 +58,25 @@ int32_t main() {
             preSize--;
             postSize++;
         }
-        while (true) {
-            if (preSize != preCount || postSize != postCount || preCount == 0)break;
-            auto it = pre.end();
-            it--;
-            int maxPre = (*it).first;
-            int minPost = (*post.begin()).first;
-            if (maxPre > minPost) {
-                erase(pre, maxPre);
-                erase(post, minPost);
-                pre[minPost]++;
-                post[maxPre]++;
-                preSum -= maxPre;
-                postSum -= minPost;
-                preSum += minPost;
-                postSum += maxPre;
-            } else {
-                break;
+        if (preSize == preCount and postSize == postCount and preCount != 0)
+            while (true) {
+                auto it = pre.end();
+                it--;
+                int maxPre = (*it).first;
+                int minPost = (*post.begin()).first;
+                if (maxPre > minPost) {
+                    erase(pre, maxPre);
+                    erase(post, minPost);
+                    pre[minPost]++;
+                    post[maxPre]++;
+                    preSum -= maxPre;
+                    postSum -= minPost;
+                    preSum += minPost;
+                    postSum += maxPre;
+                } else {
+                    break;
+                }
             }
-        }
         if (i + 1 >= k) {
             int median = (*post.begin()).first;
             cout << preCount * median - preSum + postSum - postCount * median << " ";
