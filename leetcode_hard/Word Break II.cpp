@@ -30,8 +30,8 @@ public:
     vector <string> words;
     vector <vector<string>> dp;
     vector<bool> solvedDp;
-
-    vector <string> solve(int index, string &str) {
+    string str;
+    vector <string> solve(int index) {
         if (index == str.size()) {
             return {""};
         }
@@ -45,7 +45,7 @@ public:
         vector <string> ans;
         for (int nx: next[index]) {
             int nextIndex = index + words[nx].size() ;
-            vector <string> s = solve(nextIndex, str);
+            vector <string> s = solve(nextIndex);
             for (string it: s) {
                 if(it.size())
                 ans.push_back(words[nx] + " " + it);
@@ -59,6 +59,7 @@ public:
 
 
     vector <string> wordBreak(string s, vector <string> &wordDict) {
+        this->str = s;
         words = wordDict;
         trie t = trie();
         int c = 0;
@@ -79,7 +80,7 @@ public:
             }
         }
 
-        return solve(0, s);
+        return solve(0);
 
     }
 };
