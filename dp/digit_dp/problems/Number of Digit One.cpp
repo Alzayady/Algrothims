@@ -32,7 +32,7 @@ public:
             n/=10;
         }   
         reverse(nums.begin(),nums.end());
-        memset(dp,-1,sizeof dp);
+        for(int i= 0 ; i < 10 ; i ++)for(int j = 0 ;j < 2 ; j ++)dp[i][j] = {-1,-1};
         return solve(0).second;
         
     }
