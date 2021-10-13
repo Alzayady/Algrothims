@@ -23,3 +23,8 @@ public:
 };
 priority_queue<int, vector<int>, greater<int> > min_pq;
 
+int32_t main(){
+    IO;
+    
+    return 0;
+}
