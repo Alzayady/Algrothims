@@ -97,10 +97,22 @@ int main() {
                 m[bb].second = it->first;
             } else {
                 m[bb].second = it->first;
-                it--;
-                m[bb].first = it->first;
+                if (it != blocks[bb].begin()) {
+                    it--;
+                    m[bb].first = it->first;
+                }
+
             }
         }
     }
     return 0;
-}
+}/*
+ 1
+5
+3
+U
+1 5
+Q
+1 1
+
+ */
