@@ -19,23 +19,25 @@ public:
         for(int i = 0; i < n ; i ++){
             dsu[i] = i ;
         }
-        vector<int>sev(1e5+10,-1);
-        for(int i = 2 ; i <= 1e5 ; i++){
+        int mm = 0;
+        for(int i : nums)mm=max(mm,i);
+        vector<int>sev(mm+1,-1);
+        for(int i = 2 ; i <= mm ; i++){
             if(sev[i]==-1){
                 sev[i] = i ;
-                for(long long j = 1ll* i * i ; j<= 1e5 ; j+=i){
+                for(long long j = 1ll* i * i ; j<= mm ; j+=i){
                     sev[j] = i ;
                 }
             }
         }
-        map<int , int > m ;
+        vector<int>m(mm+1,-1);
         int cur = -1 ;
         for(int i : nums){
             cur ++;
             while(i > 1){
                 int f = sev[i];
                 i/=f;
-                if(m.count(f)){
+                if(m[f]!=-1){
                     make_parent(cur,m[f]);
                 }else{
                     m[f] = cur ;
@@ -43,12 +45,11 @@ public:
             }
         }
         int ans = 0 ;
-        map<int , int > rep ;
+        vector<int> rep(mm+1) ;
         for(int i = 0; i  < n ; i ++){
-            rep[get_parent(i)]++;
-        }
-        for(auto it : rep){
-            ans = max(ans , it.second);
+            int p =get_parent(i);
+            rep[p]++;
+            ans = max(ans,rep[p]);
         }
         return ans;
         
